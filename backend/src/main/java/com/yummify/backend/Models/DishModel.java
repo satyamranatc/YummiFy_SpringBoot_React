@@ -1,6 +1,9 @@
 package com.yummify.backend.Models;
 
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.ManyToAny;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +26,64 @@ public class DishModel {
     public Double price;
 
     @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    public RestaurantModel restaurant;
+    public Long restaurant_id;
+
+    public DishModel() {}
+
+    public DishModel(String name, String description, String image, Double price, Long restaurant_id) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.restaurant_id = restaurant_id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Long getRestaurant_id() {
+        return restaurant_id;
+    }
+
+    public void setRestaurant_id(Long restaurant_id) {
+        this.restaurant_id = restaurant_id;
+    }
     
 }

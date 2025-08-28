@@ -1,14 +1,9 @@
 package com.yummify.backend.Models;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class RestaurantModel {
@@ -21,9 +16,6 @@ public class RestaurantModel {
     public String address;
     public String image;
     public String description;
-
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    List<DishModel> dishes = new ArrayList<DishModel>();;
     
 
     RestaurantModel() {}
@@ -84,6 +76,8 @@ public class RestaurantModel {
     {
         this.description = description;
     }
+
+  
 
 
 }
