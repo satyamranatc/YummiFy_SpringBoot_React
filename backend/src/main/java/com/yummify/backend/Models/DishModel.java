@@ -26,16 +26,17 @@ public class DishModel {
     public Double price;
 
     @ManyToOne
-    public Long restaurant_id;
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "id")
+    private RestaurantModel restaurant;
 
     public DishModel() {}
 
-    public DishModel(String name, String description, String image, Double price, Long restaurant_id) {
+    public DishModel(String name, String description, String image, Double price, RestaurantModel rest) {
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
-        this.restaurant_id = restaurant_id;
+        this.restaurant = rest;
     }
 
     public Long getId() {
@@ -78,12 +79,12 @@ public class DishModel {
         this.price = price;
     }
 
-    public Long getRestaurant_id() {
-        return restaurant_id;
+    public RestaurantModel getRestaurant() {
+        return restaurant;
     }
 
-    public void setRestaurant_id(Long restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setRestaurant_id(RestaurantModel restaurant) {
+        this.restaurant =   restaurant;
     }
     
 }
